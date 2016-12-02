@@ -9,8 +9,7 @@ This repository gives coding conventions for Terraform's HashiCorp Configuration
 Use 2 spaces when defining resources except when defining inline policies or other inline resources.
 
 
-<pre>
-  <code class="ruby">
+<code>
 resource "aws_iam_role" "iam_role" {
   name = "${var.resource_name}-role"
   assume_role_policy = <<EOF
@@ -29,8 +28,8 @@ resource "aws_iam_role" "iam_role" {
 }
 EOF
 }
-  </code>
-</pre>
+</code>
+
 
 When commenting use two "//" and a space in front of the comment.
 
