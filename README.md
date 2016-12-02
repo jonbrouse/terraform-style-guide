@@ -1,5 +1,7 @@
 # Introduction
 
+terraform
+
 This repository gives coding conventions for Terraform's HashiCorp Configuration Language (HCL). Terraform allows infrastructure to be described as code. As such, we should adhere to a style guide to ensure easily readable and high quality code.
 
 # Syntax
