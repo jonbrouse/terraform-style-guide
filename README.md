@@ -1,15 +1,13 @@
-# Terraform Style Guide
-
-## Introduction
+# Introduction
 
 This repository gives coding conventions for Terraform's HashiCorp Configuration Language (HCL). Terraform allows infrastructure to be described as code. As such, we should adhere to a style guide to ensure easily readable and high quality code.
 
-## Syntax
+# Syntax
 
 Use 2 spaces when defining resources except when defining inline policies or other inline resources.
 
 
-<code>
+```
 resource "aws_iam_role" "iam_role" {
   name = "${var.resource_name}-role"
   assume_role_policy = <<EOF
@@ -28,7 +26,7 @@ resource "aws_iam_role" "iam_role" {
 }
 EOF
 }
-</code>
+```
 
 
 When commenting use two "//" and a space in front of the comment.
@@ -38,7 +36,7 @@ When commenting use two "//" and a space in front of the comment.
 ...
 ```
 
-## Resource Naming
+# Resource Naming
 
 Only use "\_" (underscore/underbar) when naming Terraform variables, modules, etc
 Only use "-" (dash/hyphen/minus sign/etc) when naming the created resources.
