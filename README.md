@@ -38,7 +38,7 @@ When commenting use two "//" and a space in front of the comment.
 
 # Resource Naming
 
-Only use "\_" (underscore/underbar) when naming Terraform variables, modules, etc
+Only use "\_" (underscore/underbar) when naming Terraform variables, modules, etc  
 Only use "-" (dash/hyphen/minus sign/etc) when naming the created resources.
 
 ```
