@@ -36,9 +36,31 @@ When commenting use two "//" and a space in front of the comment.
 ...
 ```
 
-# Resource Naming
+# Naming
 
-Only use "\_" (underscore/underbar) when naming Terraform variables, modules, etc  
+## File Names
+
+Create a separate resource file for each type of AWS resource. Similar resources should be defined in the same file and named accordingly.
+
+```
+ami.tf
+autoscaling_group.tf
+autoscaling_policy.tf
+cloudwatch.tf
+iam.tf
+launch_configuration.tf
+providers.tf
+s3.tf
+security_groups.tf
+sns.tf
+sqs.tf
+user_data.sh
+variables.tf
+```
+
+## Resource Names
+
+Only use "\_" (underscore/underbar) when naming Terraform resource TYPES, NAMES, etc  
 Only use "-" (dash/hyphen/minus sign/etc) when naming the created resources.
 
 ```
@@ -72,22 +94,3 @@ resource "aws_s3_bucket" "images_s3_bucket" {
   acl = "private"
 }
 ```
-
-Create a separate resource file for each type of AWS resource. Similar resources should be defined in the same file and named accordingly.
-
-```
-ami.tf
-autoscaling_group.tf
-autoscaling_policy.tf
-cloudwatch.tf
-iam.tf
-launch_configuration.tf
-providers.tf
-s3.tf
-security_groups.tf
-sns.tf
-sqs.tf
-user_data.sh
-variables.tf
-```
-
