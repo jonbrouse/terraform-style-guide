@@ -54,7 +54,7 @@ resource "aws_autoscaling_group" "autoscaling_group" {
 ...
 ```
 
-If there are multiple resources of the same TYPE defined, add a minimalistic identifier to differentiate between the two resources.
+If there are multiple resources of the same TYPE defined, add a minimalistic identifier to differentiate between the two resources. A blank line should sperate resource definitions contained in the same file.
 
 ```
 // Create Data S3 Bucket
@@ -73,13 +73,7 @@ resource "aws_s3_bucket" "images_s3_bucket" {
 }
 ```
 
-A blank line should sperate resource definitions contained in the same file.
-
-## Service Modules
-
-A service module is a type of Terraform module which constructs all resources a service will need to be operational. A service module can be thought of as a reuseable library that deploys a single service's infrastructure. They are the brains and contain the logic to create Terraform resources. 
-
-Create a separate resource file for each type of AWS resource.
+Create a separate resource file for each type of AWS resource. Similar resources should be defined in the same file and named accordingly.
 
 ```
 ami.tf
@@ -97,4 +91,3 @@ user_data.sh
 variables.tf
 ```
 
-Similar resources should be defined in the same file and named accordingly. See _Resource Naming_ section above.
