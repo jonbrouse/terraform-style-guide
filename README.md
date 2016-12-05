@@ -47,14 +47,14 @@ resource "aws_security_group" "security_group" {
 ...
 ```
 
-* A resource's NAME should be the same as the TYPE minus the provider.
+A resource's NAME should be the same as the TYPE minus the provider.
 
 ```
 resource "aws_autoscaling_group" "autoscaling_group" {
 ...
 ```
 
-* If there are multiple resources of the same TYPE defined, add a minimalistic identifier to differentiate between the two resources.
+If there are multiple resources of the same TYPE defined, add a minimalistic identifier to differentiate between the two resources.
 
 ```
 // Create Data S3 Bucket
