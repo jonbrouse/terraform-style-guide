@@ -77,6 +77,8 @@ A blank line should sperate resource definitions contained in the same file.
 
 ## Service Modules
 
+A service module is a type of Terraform module which constructs all resources a service will need to be operational. A service module can be thought of as a reuseable library that deploys a single service's infrastructure. They are the brains and contain the logic to create Terraform resources. 
+
 Create a separate resource file for each type of AWS resource.
 
 ```
