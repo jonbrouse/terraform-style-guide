@@ -45,7 +45,6 @@ Create a separate resource file for each type of AWS resource. Similar resources
 ```
 ami.tf
 autoscaling_group.tf
-autoscaling_policy.tf
 cloudwatch.tf
 iam.tf
 launch_configuration.tf
