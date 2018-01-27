@@ -76,22 +76,24 @@ variables.tf
 
 ## Parameter, Meta-parameter and Variable Naming
 
-A hyphen 
-## Parameter Naming
-
-When defining the resource 
-To avoid confusion and comlexity: 
-
-- __Only use an underscore (`_`) when naming Terraform resource TYPES, NAMES, etc__
-- __Only use a hyphen (`-`) when naming the created resources.__
-
+ __Only use an underscore (`_`) when naming Terraform resources like TYPE parameters or NAME parameters_
+ 
+ ```
+resource "aws_security_group" "security_group" {
+...
 ```
+
+## Resource Naming
+
+__Only use a hyphen (`-`) when naming the component being created.__
+
+ ```
 resource "aws_security_group" "security_group" {
   name = "${var.resource_name}-security-group"
 ...
 ```
 
-A resource's NAME should be the same as the TYPE minus the provider.
+__A resource's NAME should be the same as the TYPE minus the provider.__
 
 ```
 resource "aws_autoscaling_group" "autoscaling_group" {
