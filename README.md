@@ -76,7 +76,7 @@ variables.tf
 
 ## Parameter, Meta-parameter and Variable Naming
 
- __Only use an underscore (`_`) when naming Terraform resources like TYPE parameters or NAME parameters_
+ __Only use an underscore (`_`) when naming Terraform resources like TYPE parameters or NAME parameters__
  
  ```
 resource "aws_security_group" "security_group" {
