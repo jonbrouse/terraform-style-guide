@@ -1,12 +1,30 @@
-# Introduction
+# Terraform Style Guide
+
+**Table of Contents**
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+- [Introduction](#introduction)
+- [Syntax](#syntax)
+  - [Spacing](#spacing)
+  - [Resource Block Alignment](#resource-block-alignment)
+  - [Comments](#comments)
+- [Naming Conventions](#naming-conventions)
+  - [File Names](#file-names)
+  - [Parameter, Meta-parameter and Variable Naming](#parameter-meta-parameter-and-variable-naming)
+  - [Resource Naming](#resource-naming)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Introduction
 
 This repository gives coding conventions for Terraform's HashiCorp Configuration Language (HCL). Terraform allows infrastructure to be described as code. As such, we should adhere to a style guide to ensure readable and high quality code.
 
-# Syntax
+## Syntax
 
 - Strings are in double-quotes.
 
-## Spacing
+### Spacing
 
 Use 2 spaces when defining resources except when defining inline policies or other inline resources.
 
@@ -31,7 +49,7 @@ EOF
 }
 ```
 
-## Resource Block Alignment
+### Resource Block Alignment
 
 Parameter definitions in a resource block should be aligned. The `terraform fmt` command can do this for you.
 
@@ -44,7 +62,7 @@ provider "aws" {
 ```
 
 
-## Comments
+### Comments
 
 When commenting use two "//" and a space in front of the comment.
 
@@ -53,9 +71,9 @@ When commenting use two "//" and a space in front of the comment.
 ...
 ```
 
-# Naming
+## Naming Conventions
 
-## File Names
+### File Names
 
 Create a separate resource file for each type of AWS resource. Similar resources should be defined in the same file and named accordingly.
 
@@ -74,18 +92,26 @@ user_data.sh
 variables.tf
 ```
 
-## Resource Names
+### Parameter, Meta-parameter and Variable Naming
 
-Only use "\_" (underscore/underbar) when naming Terraform resource TYPES, NAMES, etc  
-Only use "-" (dash/hyphen/minus sign/etc) when naming the created resources.
-
+ __Only use an underscore (`_`) when naming Terraform resources like TYPE/NAME parameters and variables.__
+ 
+ ```
+resource "aws_security_group" "security_group" {
+...
 ```
+
+### Resource Naming
+
+__Only use a hyphen (`-`) when naming the component being created.__
+
+ ```
 resource "aws_security_group" "security_group" {
   name = "${var.resource_name}-security-group"
 ...
 ```
 
-A resource's NAME should be the same as the TYPE minus the provider.
+__A resource's NAME should be the same as the TYPE minus the provider.__
 
 ```
 resource "aws_autoscaling_group" "autoscaling_group" {
