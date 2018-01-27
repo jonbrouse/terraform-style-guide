@@ -44,12 +44,12 @@ provider "aws" {
 ```
 
 
-
+## Comments
 
 When commenting use two "//" and a space in front of the comment.
 
 ```
-// Create ELK Auto Scaling Group Resource
+// CREATE ELK IAM ROLE 
 ...
 ```
 
