@@ -5,11 +5,13 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 - [Introduction](#introduction)
+
+- [Introduction](#introduction)
 - [Syntax](#syntax)
   - [Spacing](#spacing)
   - [Resource Block Alignment](#resource-block-alignment)
   - [Comments](#comments)
-- [Naming](#naming)
+- [Naming Conventions](#naming-conventions)
   - [File Names](#file-names)
   - [Parameter, Meta-parameter and Variable Naming](#parameter-meta-parameter-and-variable-naming)
   - [Resource Naming](#resource-naming)
@@ -71,7 +73,7 @@ When commenting use two "//" and a space in front of the comment.
 ...
 ```
 
-## Naming
+## Naming Conventions
 
 ### File Names
 
