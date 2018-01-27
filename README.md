@@ -4,8 +4,11 @@ This repository gives coding conventions for Terraform's HashiCorp Configuration
 
 # Syntax
 
-Use 2 spaces when defining resources except when defining inline policies or other inline resources.
+- Strings are in double-quotes.
 
+## Spacing
+
+Use 2 spaces when defining resources except when defining inline policies or other inline resources.
 
 ```
 resource "aws_iam_role" "iam_role" {
@@ -27,6 +30,20 @@ resource "aws_iam_role" "iam_role" {
 EOF
 }
 ```
+
+## Resource Block Alignment
+
+Parameter definitions in a resource block should be aligned. The `terraform fmt` command can do this for you.
+
+```
+provider "aws" {
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
+  region     = "us-east-1"
+}
+```
+
+
 
 
 When commenting use two "//" and a space in front of the comment.
