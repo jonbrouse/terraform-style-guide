@@ -74,10 +74,16 @@ user_data.sh
 variables.tf
 ```
 
-## Resource Names
+## Parameter, Meta-parameter and Variable Naming
 
-Only use "\_" (underscore/underbar) when naming Terraform resource TYPES, NAMES, etc  
-Only use "-" (dash/hyphen/minus sign/etc) when naming the created resources.
+A hyphen 
+## Parameter Naming
+
+When defining the resource 
+To avoid confusion and comlexity: 
+
+- __Only use an underscore (`_`) when naming Terraform resource TYPES, NAMES, etc__
+- __Only use a hyphen (`-`) when naming the created resources.__
 
 ```
 resource "aws_security_group" "security_group" {
