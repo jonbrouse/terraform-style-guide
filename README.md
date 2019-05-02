@@ -71,6 +71,14 @@ When commenting use two "//" and a space in front of the comment.
 ...
 ```
 
+### Organizing Variables
+
+The `variables.tf` file should be broken down into three sections with each section arranged alphabetically. Starting at the top of the file:
+
+1. Variables that have no defaults defined
+2. Variables that contain defaults
+3. All locals blocks 
+
 ## Naming Conventions
 
 ### File Names
