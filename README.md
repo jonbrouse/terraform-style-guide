@@ -9,6 +9,7 @@
   - [Spacing](#spacing)
   - [Resource Block Alignment](#resource-block-alignment)
   - [Comments](#comments)
+  - [Organizing Variables](#organizing-variables)
 - [Naming Conventions](#naming-conventions)
   - [File Names](#file-names)
   - [Parameter, Meta-parameter and Variable Naming](#parameter-meta-parameter-and-variable-naming)
@@ -78,6 +79,20 @@ The `variables.tf` file should be broken down into three sections with each sect
 1. Variables that have no defaults defined
 2. Variables that contain defaults
 3. All locals blocks 
+
+For example:
+
+```
+variable "image_tag" {}
+
+variable "desired_count" {
+  default = "2"
+}
+
+locals {
+  domain_name = "${data.terraform_remote_state.account.domain_name}"
+}
+```
 
 ## Naming Conventions
 
