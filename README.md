@@ -65,10 +65,10 @@ provider "aws" {
 
 ### Comments
 
-When commenting use two "//" and a space in front of the comment.
+When commenting use a hash "#" and a space in front of the comment.
 
 ```
-// CREATE ELK IAM ROLE 
+# CREATE ELK IAM ROLE 
 ...
 ```
 
