@@ -144,7 +144,7 @@ resource "aws_autoscaling_group" "autoscaling_group" {
 If there are multiple resources of the same TYPE defined, add a minimalistic identifier to differentiate between the two resources. A blank line should sperate resource definitions contained in the same file.
 
 ```
-// Create Data S3 Bucket
+# Create Data S3 Bucket
 resource "aws_s3_bucket" "data_s3_bucket" {
   bucket = "${var.environment_name}-data-${var.aws_region}"
   acl    = "private"
@@ -153,7 +153,7 @@ resource "aws_s3_bucket" "data_s3_bucket" {
   }
 }
 
-// Create Images S3 Bucket
+# Create Images S3 Bucket
 resource "aws_s3_bucket" "images_s3_bucket" {
   bucket = "${var.environment_name}-images-${var.aws_region}"
   acl    = "private"
