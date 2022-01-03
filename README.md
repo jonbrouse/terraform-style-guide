@@ -15,7 +15,7 @@
   - [File Names](#file-names)
   - [Parameter, Meta-parameter and Variable Naming](#parameter-meta-parameter-and-variable-naming)
   - [Resource Naming](#resource-naming)
-  - [Data Resources](#data-resources)
+- [Policies as Data Sources](#policies-as-data-sources)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -163,7 +163,7 @@ resource "aws_s3_bucket" "images_s3_bucket" {
 }
 ```
 
-### Data Resources
+## Policies as Data Sources
 
 All policies (IAM, S3, KMS, SNS, etc.) should be located in `data.tf`.  The following examples create IAM resources in `iam.tf` and policies as data sources in `data.tf`
 
