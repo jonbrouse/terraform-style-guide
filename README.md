@@ -1,9 +1,10 @@
 # Terraform Style Guide
 
-**Table of Contents**
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
 - [Introduction](#introduction)
 - [Syntax](#syntax)
   - [Spacing](#spacing)
@@ -14,6 +15,7 @@
   - [File Names](#file-names)
   - [Parameter, Meta-parameter and Variable Naming](#parameter-meta-parameter-and-variable-naming)
   - [Resource Naming](#resource-naming)
+- [Policies as Data Sources](#policies-as-data-sources)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -56,8 +58,8 @@ Parameter definitions in a resource block should be aligned. The `terraform fmt`
 
 ```
 provider "aws" {
-  access_key = "${var.aws_access_key}"
-  secret_key = "${var.aws_secret_key}"
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
   region     = "us-east-1"
 }
 ```
@@ -68,7 +70,7 @@ provider "aws" {
 When commenting use a hash "#" and a space in front of the comment.
 
 ```
-# CREATE ELK IAM ROLE 
+# Create ELK IAM Role
 ...
 ```
 
@@ -90,7 +92,7 @@ variable "desired_count" {
 }
 
 locals {
-  domain_name = "${data.terraform_remote_state.account.domain_name}"
+  domain_name = ${data.terraform_remote_state.account.domain_name}
 }
 ```
 
@@ -104,6 +106,7 @@ Create a separate resource file for each type of AWS resource. Similar resources
 ami.tf
 autoscaling_group.tf
 cloudwatch.tf
+data.tf
 iam.tf
 launch_configuration.tf
 providers.tf
@@ -158,4 +161,62 @@ resource "aws_s3_bucket" "images_s3_bucket" {
   bucket = "${var.environment_name}-images-${var.aws_region}"
   acl    = "private"
 }
+```
+
+## Policies as Data Sources
+
+All policies (IAM, S3, KMS, SNS, etc.) should be located in `data.tf`.  The following examples create IAM resources in `iam.tf` and policies as data sources in `data.tf`
+
+Snippet from `iam.tf`:
+```
+# Create Cloudtrail log IAM role for logging
+resource "aws_iam_role" "cloudtrail_iam_role" {
+  name  = "cloudtrail-role"
+  assume_role_policy = data.aws_iam_policy_document.cloudtrail_assume_role_iam_policy_document.json
+}
+
+# Attach Cloudtrail log policy to Cloudtrail log IAM role
+resource "aws_iam_role_policy_attachment" "cloudtrail_policy_attachement" {
+  role       = aws_iam_role.cloudtrail_iam_role.name
+  policy_arn = aws_iam_policy.cloudtrail_iam_policy.id
+}
+
+# Create Cloudtrail log IAM policy
+resource "aws_iam_policy" "cloudtrail_iam_policy" {
+  name   = "cloudtrail-iam-iam-policy"
+  policy = data.aws_iam_policy_document.cloudtrail_iam_policy_document.json
+}
+```
+
+Snippet from `data.tf`:
+```
+# Create Cloudtrail assume role policy
+data "aws_iam_policy_document" "cloudtrail_assume_role_iam_policy_document" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "AWS"
+      identifiers = ["cloudtrail.amazonaws.com"]
+    }
+  }
+}
+
+# Create Cloudtrail log IAM policy document
+data "aws_iam_policy_document" "cloudtrail_log_iam_policy_document" {
+  statement {
+    sid    = "AllowLogs"
+    effect = "Allow"
+
+    actions = [
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
+    ]
+
+    resources = [
+      "${aws_cloudwatch_log_group.cloudtrail_cloudwatch_log_group.arn}*",
+    ]
+  }
+}
+
 ```
