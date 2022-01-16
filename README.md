@@ -16,6 +16,8 @@
   - [Parameter, Meta-parameter and Variable Naming](#parameter-meta-parameter-and-variable-naming)
   - [Resource Naming](#resource-naming)
 - [Policies as Data Sources](#policies-as-data-sources)
+- [Infrastructure Root Modules](#infrastructure-root-modules)
+  - [Resources Defined by Child Modules](#resources-defined-by-child-modules)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -223,13 +225,17 @@ data "aws_iam_policy_document" "cloudtrail_log_iam_policy_document" {
 
 ## Infrastructure Root Modules
 
-This section is based on a [Terraform infrastructure management pattern](https://github.com/TerraformDesignPattern/SysAdvent2016) that uses folder hierarchy to segment state and define dependencies. Example folder structure down to the service level:
+This section is based on a [Terraform infrastructure management pattern](https://github.com/TerraformDesignPattern/SysAdvent2016) that uses folder hierarchy to segment state and define dependencies. Each directory contains a root module that calls a child module. Example folder structure down to the service level:
 
 ```
 /infrastructure/aws/production-aws/us-west-2/prod-vpc-usw2/prod/auth-service 
 
 /Root/Provider/Account/Region/VPC/Enviroment/Service
 ```
+
+### Resources Defined by Child Modules
+
+The table below gives examples of what is generally defined within each child module define within a root module directory.
 
 | Account          | Region                      | VPC                    | Environment                  | Service        |
 | ---------------- | --------------------------- | ---------------------- | ---------------------------- | -------------- |
