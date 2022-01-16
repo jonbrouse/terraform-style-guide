@@ -220,3 +220,21 @@ data "aws_iam_policy_document" "cloudtrail_log_iam_policy_document" {
 }
 
 ```
+
+## Infrastructure Root Modules
+
+This section is based on a [Terraform infrastructure management pattern](https://github.com/TerraformDesignPattern/SysAdvent2016) that uses folder hierarchy to segment state and define dependencies. Example folder structure down to the service level:
+
+```
+/infrastructure/aws/production-aws/us-west-2/prod-vpc-usw2/prod/auth-service 
+
+/Root/Provider/Account/Region/VPC/Enviroment/Service
+```
+
+| Account          | Region                      | VPC                    | Environment                  | Service        |
+| ---------------- | --------------------------- | ---------------------- | ---------------------------- | -------------- |
+| Global resources | Region specific resources   | VPC specific resources | Resources shared by services | If needed      |
+| CloudTrail       | ACM Certificate             | NAT/Internet Gateways  | Security groups              | IAM policies   |
+| Route 53 Zone    | Log archive streams         | Flow logs              | KMS keys                     | SSM parameters |
+| Admin IAM role   | Backups, logs, etc. buckets | Subnets                | SQS queues/SNS topics        |                |
+|                  |                             | VPC Endpoints          | Environment log group        |                |
