@@ -230,8 +230,10 @@ This section is based on a [Terraform infrastructure management pattern](https:/
 ```
 /infrastructure/aws/production-aws/us-west-2/prod-vpc-usw2/prod/auth-service 
 
-/Root/Provider/Account/Region/VPC/Enviroment/Service
+| Project Root   | Provider | Account        | Region      | VPC           | Enviroment | Service      |
+| infrastructure | aws      | production-aws | us-west-2   | prod-vpc-usw2 | prod       | auth-service |
 ```
+
 
 ### Resources Defined by Child Modules
 
