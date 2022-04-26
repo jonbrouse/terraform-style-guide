@@ -144,7 +144,7 @@ resource "aws_autoscaling_group" "autoscaling_group" {
 ...
 ```
 
-If there are multiple resources of the same TYPE defined, add a minimalistic identifier to differentiate between the two resources. A blank line should sperate resource definitions contained in the same file.
+If there are multiple resources of the same TYPE defined, add a minimalistic identifier to differentiate between the two resources. A blank line should separate resource definitions contained in the same file.
 
 ```
 # Create Data S3 Bucket
