@@ -92,7 +92,7 @@ variable "desired_count" {
 }
 
 locals {
-  domain_name = ${data.terraform_remote_state.account.domain_name}
+  domain_name = data.terraform_remote_state.account.domain_name
 }
 ```
 
